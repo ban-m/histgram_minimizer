@@ -1,0 +1,8 @@
+[package]
+name = "histogram_minimizer"
+version = "0.1.0"
+authors = ["ban-m <ban-m@g.ecc.u-tokyo.ac.jp>"]
+
+[dependencies]
+csv = "1.0.0-beta.4"
+rayon = "*"

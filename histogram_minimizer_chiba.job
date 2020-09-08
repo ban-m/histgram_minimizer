@@ -1,0 +1,14 @@
+#!/bin/bash
+#$ -S /bin/bash
+#$ -N HistMinChiba
+#$ -cwd
+#$ -e ./result/chiba.log
+#$ -o ./result/chiba.csv
+#$ -t 1-8:1
+#$ -V
+CORRECT_DATA=./data/ChibaNormalFlat1000CORRECT.csv
+WRONG_DATA=./data/ChibaNormalFlat1000UNCORRECT.csv
+REFERENCE_SIZES=(0 3 10 15 20 50 100 500 1000)
+REFERENCE_SIZE=${REFERENCE_SIZES[$SGE_TASK_ID]}
+./target/release/histogram_minimizer $REFERENCE_SIZE $CORRECT_DATA $WRONG_DATA chiba
+ 

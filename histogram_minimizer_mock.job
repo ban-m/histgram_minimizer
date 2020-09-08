@@ -1,0 +1,14 @@
+#!/bin/bash
+#$ -S /bin/bash
+#$ -N HistMinSub
+#$ -cwd
+#$ -e ./result/mock.log
+#$ -o ./result/mock.csv
+#$ -t 1-8:1
+#$ -V
+CORRECT_DATA=./data/SubNormalNormal250CORRECT.csv
+WRONG_DATA=./data/SubNormalNormal250UNCORRECT.csv
+REFERENCE_SIZES=(0 3 10 15 20 50 100 500 1000)
+REFERENCE_SIZE=${REFERENCE_SIZES[$SGE_TASK_ID]}
+./target/release/histogram_minimizer $REFERENCE_SIZE $CORRECT_DATA $WRONG_DATA chiba
+ 
